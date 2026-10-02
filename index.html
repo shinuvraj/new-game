@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Match the Theory – KTET Guru Plus</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2F5F7;--card:#fff;--ink:#172B3A;--mute:#5B6E7C;--line:#CBD6DD;--blue:#2F6DB5;--amber:#C9772A;--ok:#2E9E5B;--bad:#D64545;--acc:#172B3A;--accink:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101C25;--card:#1B2B37;--ink:#EAF1F5;--mute:#9DB0BD;--line:#34495A;--blue:#6FA6E8;--amber:#E8A25E;--ok:#4CC785;--bad:#F07575;--acc:#EAF1F5;--accink:#101C25}}
+:root[data-theme="dark"]{--bg:#101C25;--card:#1B2B37;--ink:#EAF1F5;--mute:#9DB0BD;--line:#34495A;--blue:#6FA6E8;--amber:#E8A25E;--ok:#4CC785;--bad:#F07575;--acc:#EAF1F5;--accink:#101C25}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:17px;line-height:1.4}
+#app{max-width:720px;margin:0 auto;padding:14px 14px 40px}
+header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.profile{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--line);flex:0 0 auto}
+
+.brand{font-weight:700;font-size:15px;flex:1}
+.pill{background:var(--card);border:1.5px solid var(--line);border-radius:99px;padding:4px 12px;font-weight:700;font-size:15px}
+.icon{background:none;border:1.5px solid var(--line);border-radius:99px;width:36px;height:36px;color:var(--ink);font-size:16px;cursor:pointer}
+.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden;margin-bottom:14px}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+h1{font-size:30px;line-height:1.1;margin:8px 0}
+h2{font-size:22px;margin:0 0 2px}
+.sub{color:var(--mute);margin:0 0 14px}
+.btn{background:var(--acc);color:var(--accink);border:0;border-radius:12px;padding:13px 22px;font:700 17px inherit;font-family:inherit;cursor:pointer;min-height:48px}
+.btn.alt{background:none;color:var(--ink);border:1.5px solid var(--line)}
+.zones{display:grid;gap:10px;margin-bottom:14px}
+.zones.c2{grid-template-columns:1fr 1fr}
+.zones.c1{grid-template-columns:1fr}
+.zone{background:var(--card);border:2px dashed var(--line);border-radius:14px;padding:10px;min-height:92px;transition:border-color .15s,background .15s}
+.zone b{display:block;font-size:16px}
+.zone small{color:var(--mute);display:block;margin-bottom:6px}
+.zone[data-z="p"]{border-color:var(--blue)}.zone[data-z="b"]{border-color:var(--amber)}
+.zone.over{background:color-mix(in srgb,var(--blue) 12%,var(--card));border-style:solid}
+.zone.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--card))}
+.zone.done{border-style:solid}
+.drops{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:color-mix(in srgb,var(--ok) 18%,var(--card));border:2px solid var(--ok);border-radius:10px;padding:6px 10px;font-weight:700;font-size:15px}
+.tray{display:flex;flex-wrap:wrap;gap:10px;padding:12px;border-radius:14px;background:color-mix(in srgb,var(--ink) 6%,var(--bg));min-height:70px;position:sticky;bottom:8px}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:10px;padding:10px 14px;font-weight:700;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;box-shadow:0 3px 0 var(--ink)}
+.card.sel{outline:3px solid var(--blue);outline-offset:2px}
+.card.lift{opacity:.35}
+.card.shake{animation:sh .35s;border-color:var(--bad)}
+@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.ghost{position:fixed;z-index:50;pointer-events:none;transform:translate(-50%,-60%) scale(1.06);margin:0;box-shadow:0 10px 24px rgba(0,0,0,.3)}
+#msg{min-height:26px;font-weight:700;margin:0 0 8px}
+.ok{color:var(--ok)}.no{color:var(--bad)}
+.opts{display:grid;gap:10px;margin:14px 0}
+.opt{text-align:left;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:14px;font:inherit;font-weight:700;cursor:pointer;min-height:52px}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,var(--card))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 16%,var(--card))}
+.modal{position:fixed;inset:0;background:rgba(10,20,28,.6);display:flex;align-items:center;justify-content:center;padding:18px;z-index:60}
+.modal>div{background:var(--card);border-radius:18px;padding:22px;max-width:420px;width:100%}
+.big{font-size:54px;font-weight:700;line-height:1}
+.badge{display:inline-block;border:2px solid var(--ok);color:var(--ok);border-radius:12px;padding:6px 14px;font-weight:700;margin:8px 0}
+@media (max-width:420px){.zones.c2{gap:8px}.zone{padding:8px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>\n
+/* Responsive mobile layout: compact, readable, and avoids horizontal clipping */
+html, body {
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+#app {
+  width: 100%;
+  max-width: 720px;
+  padding: 10px 12px 16px;
+  margin: 0 auto;
+}
+header { gap: 7px; margin-bottom: 7px; }
+.profile { width: 32px; height: 32px; }
+.brand { font-size: clamp(12px, 3.5vw, 15px); }
+.pill { font-size: clamp(12px, 3.5vw, 15px); padding: 3px 9px; }
+.icon { width: 34px; height: 34px; flex: 0 0 auto; }
+h1 { font-size: clamp(21px, 6vw, 30px); }
+h2 { font-size: clamp(17px, 4.7vw, 22px); }
+.sub { font-size: clamp(13px, 3.6vw, 16px); line-height: 1.3; }
+.btn { font-size: 15px; padding: 10px 16px; min-height: 44px; }
+.zones { gap: 7px; margin-bottom: 9px; }
+.zones.c2, .zones.c1 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.zone {
+  min-width: 0;
+  min-height: 66px;
+  padding: 8px;
+  border-radius: 11px;
+  overflow-wrap: anywhere;
+}
+.zone b { font-size: clamp(12px, 3.5vw, 15px); line-height: 1.2; }
+.zone small { font-size: clamp(11px, 3vw, 13px); line-height: 1.2; margin: 3px 0; }
+.drops { gap: 4px; }
+.chip { font-size: clamp(11px, 3vw, 14px); padding: 4px 7px; overflow-wrap: anywhere; }
+.tray {
+  position: static;
+  gap: 7px;
+  padding: 8px;
+  min-height: 0;
+  border-radius: 11px;
+}
+.card {
+  font-size: clamp(12px, 3.5vw, 15px);
+  line-height: 1.2;
+  padding: 8px 10px;
+  min-height: 40px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+#msg { font-size: 14px; min-height: 20px; margin-bottom: 5px; }
+.opts { gap: 7px; margin: 10px 0; }
+.opt {
+  font-size: clamp(13px, 3.7vw, 16px);
+  line-height: 1.25;
+  padding: 10px 12px;
+  min-height: 44px;
+}
+.bar { margin-bottom: 9px; }
+.modal { padding: 10px; }
+.modal > div { padding: 16px; max-height: 88svh; overflow-y: auto; }
+.big { font-size: 44px; }
+@media (max-width: 360px) {
+  #app { padding: 8px; }
+  .zones { gap: 5px; }
+  .zone { padding: 6px; min-height: 58px; }
+  .card { padding: 7px 8px; }
+}
+@media (min-width: 600px) {
+  .zones.c1 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+\n</style>\n</head>
+<body>
+<audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
+<audio id="correctSound" src="applause.mp3" preload="auto"></audio>
+<audio id="errorSound" src="error.mp3" preload="auto"></audio>
+<div id="app"></div>
+<script>
+const R=[
+{t:'Round 1 · Identify the theorist',i:'Drag each concept to Piaget or Bruner. You can also tap a card, then tap a box.',c:2,multi:1,
+ z:[['p','Jean Piaget','Cognitive stages'],['b','Jerome Bruner','Modes of learning']],
+ k:[['Assimilation','p'],['Spiral Curriculum','b'],['Accommodation','p'],['Discovery Learning','b'],['Formal Operational Stage','p'],['Scaffolding','b']],
+ e:'Piaget: assimilation, accommodation, equilibration and the four stages. Bruner: modes of representation, discovery learning, spiral curriculum and scaffolding.'},
+{t:'Round 2 · Arrange the stages',i:'Put Piaget\u2019s four stages in the right order, from earliest to latest.',c:1,
+ z:[['1','Stage 1',''],['2','Stage 2',''],['3','Stage 3',''],['4','Stage 4','']],
+ k:[['Concrete Operational · 7–11 yrs','3'],['Sensorimotor · 0–2 yrs','1'],['Formal Operational · 11+ yrs','4'],['Preoperational · 2–7 yrs','2']],
+ e:'Sensorimotor (0–2), Preoperational (2–7), Concrete Operational (7–11), Formal Operational (11 onwards).'},
+{t:'Round 3 · Bruner\u2019s representations',i:'Match each example to the correct mode of representation.',c:1,multi:1,
+ z:[['e','Enactive','Learning through physical actions'],['ic','Iconic','Learning through pictures and diagrams'],['s','Symbolic','Learning through language, numbers and symbols']],
+ k:[['Tying a knot by practising it','e'],['Studying a diagram of the water cycle','ic'],['Solving 3x + 2 = 11 in algebra','s'],['Learning to cycle by riding','e'],['Using a bar chart to compare marks','ic'],['Reading a written definition','s']],
+ e:'Enactive = action, Iconic = images and models, Symbolic = language and abstract symbols.'},
+{t:'Round 4 · Match the situation',i:'Drag each concept onto the classroom situation it describes.',c:1,
+ z:[['a','A child calls a cat a dog because both have four legs.',''],['c','A student changes an existing idea after learning new information.',''],['d','Students discover a scientific principle through experiments.',''],['sc','A teacher gradually reduces support as a learner improves.',''],['sp','A topic is revisited at increasingly complex levels.',''],['f','An adolescent reasons about hypothetical situations.','']],
+ k:[['Assimilation','a'],['Accommodation','c'],['Discovery Learning','d'],['Scaffolding','sc'],['Spiral Curriculum','sp'],['Formal Operational Thinking','f']],
+ e:'Fitting new things into old schemas is assimilation; changing the schema is accommodation. Bruner adds discovery, scaffolding and the spiral curriculum.'}
+];
+const Q=[
+['Fitting new information into an existing schema is called',['Assimilation','Accommodation','Equilibration','Conservation'],0],
+['Object permanence develops in which Piaget stage?',['Sensorimotor','Preoperational','Concrete Operational','Formal Operational'],0],
+['Conservation of number and volume is mastered in the',['Sensorimotor stage','Preoperational stage','Concrete Operational stage','Formal Operational stage'],2],
+['Learning from pictures, diagrams and models is Bruner\u2019s',['Enactive mode','Iconic mode','Symbolic mode','Reflexive mode'],1],
+['Revisiting a topic at greater depth at each level is a',['Spiral curriculum','Zone of proximal development','Schema','Conditioning'],0],
+['Scaffolding in learning is most associated with',['Skinner','Pavlov','Bruner','Thorndike'],2],
+['Egocentrism and symbolic play are typical of the',['Sensorimotor stage','Preoperational stage','Concrete Operational stage','Formal Operational stage'],1],
+['The balance between assimilation and accommodation is',['Equilibration','Adaptation','Conservation','Reinforcement'],0],
+['In discovery learning, the teacher\u2019s main role is',['Lecturer','Examiner','Guide and facilitator','Disciplinarian'],2],
+['Hypothetical and abstract reasoning belongs to the',['Sensorimotor stage','Preoperational stage','Concrete Operational stage','Formal Operational stage'],3]
+];
+const MAX=22*10+4*20+50+Q.length*10;
+const $=s=>document.querySelector(s),app=$('#app');
+const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+let score=0,ri=0,qi=0,qc=0,sel=null,mute=false,ac;
+function playSound(id){if(mute)return;const audio=document.getElementById(id);if(!audio)return;try{audio.currentTime=0;const p=audio.play();if(p&&p.catch)p.catch(()=>{});}catch(e){}}
+function beep(ok){playSound(ok?'correctSound':'errorSound')}
+function startMusic(){if(mute)return;const music=$('#bgMusic');if(!music)return;try{music.volume=.35;const p=music.play();if(p&&p.catch)p.catch(()=>{});}catch(e){}}
+function shell(prog,body){app.innerHTML=`<header><div class="brand">KTET Guru Plus</div><span class="pill" id="sc">${score} pts</span><button class="icon" id="mu" aria-label="Sound on or off">${mute?'🔇':'🔊'}</button><img class="profile" src="myphoto.jpeg" alt="Profile photo"></header><div class="bar"><i style="width:${prog}%"></i></div>${body}`;$('#mu').onclick=()=>{mute=!mute;$('#mu').textContent=mute?'🔇':'🔊';if(mute){$('#bgMusic').pause();}else{startMusic();}}}
+function start(){score=0;ri=0;qi=0;qc=0;app.innerHTML=`<h1>Match the Theory</h1><p class="sub">Piaget and Bruner cognitive development challenge · about 10–15 minutes</p><p>Four drag-and-drop rounds, then 10 KTET-style questions. Correct match: 10 points. Round bonus: 20 points.</p><p><button class="btn" id="go">Start the challenge</button></p><p class="sub">Learn. Practise. Achieve.</p>`;$('#go').onclick=()=>{startMusic();round()}}
+function round(){const r=R[ri];sel=null;
+ const zs=r.z.map(z=>`<div class="zone" data-z="${z[0]}"><b>${z[1]}</b>${z[2]?`<small>${z[2]}</small>`:''}<div class="drops"></div></div>`).join('');
+ const ks=sh(r.k).map(k=>`<div class="card" data-z="${k[1]}">${k[0]}</div>`).join('');
+ shell(ri*20,`<h2>${r.t}</h2><p class="sub">${r.i}</p><p id="msg"></p><div class="zones c${r.c}">${zs}</div><div class="tray">${ks}</div>`);
+ document.querySelectorAll('.zone').forEach(z=>z.onclick=()=>{if(sel)attempt(sel,z)});
+ document.querySelectorAll('.card').forEach(bind)}
+function msg(t,c){const m=$('#msg');m.textContent=t;m.className=c||''}
+function bind(c){c.onpointerdown=e=>{e.preventDefault();const sx=e.clientX,sy=e.clientY;let g=null;
+ try{c.setPointerCapture(e.pointerId)}catch(x){}
+ const end=()=>{c.onpointermove=c.onpointerup=c.onpointercancel=null;c.classList.remove('lift');hl(null)};
+ c.onpointermove=ev=>{if(!g&&Math.hypot(ev.clientX-sx,ev.clientY-sy)>8){g=c.cloneNode(true);g.className='card ghost';document.body.appendChild(g);c.classList.add('lift')}
+  if(g){g.style.left=ev.clientX+'px';g.style.top=ev.clientY+'px';hl(zAt(ev))}};
+ c.onpointerup=ev=>{const z=zAt(ev);end();if(g){g.remove();if(z)attempt(c,z)}else{if(sel&&sel!==c)sel.classList.remove('sel');sel=sel===c?null:c;c.classList.toggle('sel',!!sel)}};
+ c.onpointercancel=()=>{end();if(g)g.remove()}}}
+const zAt=e=>{const el=document.elementFromPoint(e.clientX,e.clientY);return el&&el.closest('.zone')};
+function hl(z){document.querySelectorAll('.zone').forEach(x=>x.classList.toggle('over',x===z))}
+function attempt(c,z){const r=R[ri];const full=!r.multi&&z.classList.contains('done');
+ if(!full&&c.dataset.z===z.dataset.z){beep(true);const s=document.createElement('span');s.className='chip';s.textContent=c.textContent;z.querySelector('.drops').appendChild(s);z.classList.add('done');c.remove();sel=null;score+=10;$('#sc').textContent=score+' pts';msg('Correct! +10','ok');
+  const left=document.querySelectorAll('.tray .card').length;document.querySelector('.bar i').style.width=(ri*20+20*(1-left/r.k.length))+'%';
+  if(!left)setTimeout(done,500)}
+ else{beep(false);c.classList.remove('shake');void c.offsetWidth;c.classList.add('shake');z.classList.add('bad');setTimeout(()=>z.classList.remove('bad'),500);msg('Not quite. Try another box.','no')}}
+function done(){score+=20;$('#sc').textContent=score+' pts';const last=ri==R.length-1;
+ const m=document.createElement('div');m.className='modal';m.innerHTML=`<div><h2>Round complete</h2><p>Score so far: <b>${score}</b> (includes +20 bonus)</p><p class="sub">${R[ri].e}</p><button class="btn" id="nx">${last?'Start final challenge':'Next round'}</button></div>`;document.body.appendChild(m);beep(true);
+ $('#nx').onclick=()=>{m.remove();ri++;last?quiz():round()}}
+function quiz(){const q=Q[qi];const o=sh(q[1].map((t,i)=>[t,i==q[2]]));
+ shell(80+qi*2,`<h2>Final challenge · ${qi+1} of ${Q.length}</h2><p class="sub">10 points per correct answer.</p><p><b>${q[0]}</b></p><div class="opts">${o.map((x,i)=>`<button class="opt" data-r="${x[1]?1:0}">${x[0]}</button>`).join('')}</div><p id="msg"></p><div id="nxw"></div>`);
+ document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const ok=b.dataset.r==1;
+  document.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(x.dataset.r==1)x.classList.add('right')});
+  if(ok){qc++;score+=10;$('#sc').textContent=score+' pts';msg('Correct! +10','ok')}else{b.classList.add('wrong');msg('Not this time. The right answer is highlighted.','no')}
+  beep(ok);$('#nxw').innerHTML=`<button class="btn" id="nq">${qi==Q.length-1?'See my result':'Next question'}</button>`;$('#nq').onclick=()=>{qi++;qi<Q.length?quiz():end()}})}
+function end(){score+=50;const p=Math.round(score/MAX*100);const t=p>=85?'Cognitive Development Master':p>=60?'Rising Theorist':'Keep Practising';beep(true);
+ shell(100,`<h1>Challenge completed!</h1><div class="big">${score}</div><p class="sub">out of ${MAX} points · ${p}%</p><div class="badge">${t}</div><p>Final challenge: <b>${qc}/${Q.length}</b> correct. Bonus for finishing all rounds: +50.</p><p>You have completed the Piaget and Bruner challenge.</p><p><button class="btn" id="rp">Play again</button></p><p class="sub">KTET Guru Plus · Learn. Practise. Achieve.</p>`);$('#rp').onclick=start}
+start();
+</script>
+</body>
+</html>
